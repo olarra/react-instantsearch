@@ -4,7 +4,12 @@ export { Breadcrumb } from 'react-instantsearch-dom';
 export { ClearRefinements } from 'react-instantsearch-dom';
 export { Configure } from 'react-instantsearch-dom';
 export { ExperimentalConfigureRelatedItems } from 'react-instantsearch-dom';
-export { ExperimentalDynamicWidgets } from 'react-instantsearch-dom';
+
+import { DynamicWidgets } from 'react-instantsearch-core';
+/** @deprecated use DynamicWidgets */
+const ExperimentalDynamicWidgets = DynamicWidgets;
+export { DynamicWidgets, ExperimentalDynamicWidgets };
+
 export { CurrentRefinements } from 'react-instantsearch-dom';
 export { HierarchicalMenu } from 'react-instantsearch-dom';
 export { Highlight } from 'react-instantsearch-dom';

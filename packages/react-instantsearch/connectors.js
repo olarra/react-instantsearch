@@ -4,7 +4,12 @@ export { connectConfigure } from 'react-instantsearch-core';
 export {
   EXPERIMENTAL_connectConfigureRelatedItems,
 } from 'react-instantsearch-core';
-export { EXPERIMENTAL_connectDynamicWidgets } from 'react-instantsearch-core';
+
+import { default as connectDynamicWidgets } from 'react-instantsearch-core';
+/** @deprecated use connectDynamicWidgets */
+const EXPERIMENTAL_connectDynamicWidgets = connectDynamicWidgets;
+export { connectDynamicWidgets, EXPERIMENTAL_connectDynamicWidgets };
+
 export { connectCurrentRefinements } from 'react-instantsearch-core';
 export { connectGeoSearch } from 'react-instantsearch-core';
 export { connectHierarchicalMenu } from 'react-instantsearch-core';

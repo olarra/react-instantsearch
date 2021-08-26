@@ -18,7 +18,12 @@ export {
   EXPERIMENTAL_connectConfigureRelatedItems,
 } from 'react-instantsearch-core';
 export { connectCurrentRefinements } from 'react-instantsearch-core';
-export { EXPERIMENTAL_connectDynamicWidgets } from 'react-instantsearch-core';
+
+import { default as connectDynamicWidgets } from 'react-instantsearch-core';
+/** @deprecated use connectDynamicWidgets */
+const EXPERIMENTAL_connectDynamicWidgets = connectDynamicWidgets;
+export { connectDynamicWidgets, EXPERIMENTAL_connectDynamicWidgets };
+
 export { connectGeoSearch } from 'react-instantsearch-core';
 export { connectHierarchicalMenu } from 'react-instantsearch-core';
 export { connectHighlight } from 'react-instantsearch-core';
@@ -70,9 +75,11 @@ export { default as ToggleRefinement } from './widgets/ToggleRefinement';
 export { default as VoiceSearch } from './widgets/VoiceSearch';
 export { default as QueryRuleCustomData } from './widgets/QueryRuleCustomData';
 export { default as EXPERIMENTAL_Answers } from './widgets/Answers';
-export {
-  default as ExperimentalDynamicWidgets,
-} from './widgets/DynamicWidgets';
+
+import DynamicWidgets from './widgets/DynamicWidgets';
+/** @deprecated use DynamicWidgets */
+const ExperimentalDynamicWidgets = DynamicWidgets;
+export { DynamicWidgets, ExperimentalDynamicWidgets };
 
 // hooks
 export { default as EXPERIMENTAL_useAnswers } from './hooks/useAnswers';

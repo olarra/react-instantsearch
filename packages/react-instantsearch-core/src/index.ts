@@ -16,9 +16,12 @@ export { default as Configure } from './widgets/Configure';
 export {
   default as ExperimentalConfigureRelatedItems,
 } from './widgets/ConfigureRelatedItems';
-export {
-  default as ExperimentalDynamicWidgets,
-} from './widgets/DynamicWidgets';
+
+import DynamicWidgets from './widgets/DynamicWidgets';
+/** @deprecated use DynamicWidgets */
+const ExperimentalDynamicWidgets = DynamicWidgets;
+export { ExperimentalDynamicWidgets, DynamicWidgets };
+
 export { default as QueryRuleContext } from './widgets/QueryRuleContext';
 export { default as Index } from './widgets/Index';
 export { default as InstantSearch } from './widgets/InstantSearch';
@@ -35,9 +38,12 @@ export {
 export {
   default as connectCurrentRefinements,
 } from './connectors/connectCurrentRefinements';
-export {
-  default as EXPERIMENTAL_connectDynamicWidgets,
-} from './connectors/connectDynamicWidgets';
+
+import { default as connectDynamicWidgets } from './connectors/connectDynamicWidgets';
+/** @deprecated use connectDynamicWidgets */
+const EXPERIMENTAL_connectDynamicWidgets = connectDynamicWidgets;
+export { connectDynamicWidgets, EXPERIMENTAL_connectDynamicWidgets };
+
 export { default as connectGeoSearch } from './connectors/connectGeoSearch';
 export {
   default as connectHierarchicalMenu,
