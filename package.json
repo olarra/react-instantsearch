@@ -79,7 +79,7 @@
     "babel-loader": "8.0.6",
     "babel-plugin-dynamic-import-node": "2.3.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
-    "bundlesize": "0.18.0",
+    "bundlesize": "0.18.1",
     "conventional-changelog-cli": "2.0.23",
     "copy-webpack-plugin": "5.0.4",
     "css-loader": "3.2.0",
