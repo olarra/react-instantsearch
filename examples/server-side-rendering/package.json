@@ -23,7 +23,7 @@
     "react-test-renderer": "16.8.6",
     "webpack": "4.40.2",
     "webpack-cli": "3.3.7",
-    "webpack-node-externals": "1.7.2"
+    "webpack-node-externals": "3.0.0"
   },
   "dependencies": {
     "algoliasearch": "4.9.3",
