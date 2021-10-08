@@ -25,7 +25,10 @@ type InstantSearchManager = {
   getWidgetsIds(): any;
   getSearchParameters(
     ...args: any[]
-  ): { mainParameters: SearchParameters; derivedParameters: SearchParameters };
+  ): {
+    mainParameters: SearchParameters;
+    derivedParameters: SearchParameters;
+  };
   onSearchForFacetValues(...args: any[]): any;
   onExternalStateUpdate(...args: any[]): any;
   transitionState: any;
@@ -227,6 +230,41 @@ class InstantSearch extends Component<Props, State> {
     if (prevProps.searchClient !== this.props.searchClient) {
       this.state.instantSearchManager.updateClient(this.props.searchClient);
     }
+  }
+
+  componentDidMount() {
+    if (typeof window !== 'object') return;
+
+    const internalProps = ['contextValue', 'indexContextValue'];
+
+    const widgets = this.state.instantSearchManager.widgetsManager
+      .getWidgets()
+      .map(({ props, constructor }) => {
+        const { defaultProps = {}, displayName } = constructor._connectorDesc;
+
+        return {
+          displayName,
+          params: Object.keys(props).filter(
+            prop =>
+              !internalProps.includes(prop) &&
+              defaultProps[prop] !== props[prop] &&
+              props[prop] !== undefined
+          ),
+        };
+      });
+
+    const client = this.props.searchClient as any;
+    const ua =
+      client.transporter && client.transporter.userAgent
+        ? client.transporter.userAgent.value
+        : client._ua;
+
+    const payload = {
+      ua,
+      widgets,
+    };
+
+    console.log(payload);
   }
 
   componentWillUnmount() {
