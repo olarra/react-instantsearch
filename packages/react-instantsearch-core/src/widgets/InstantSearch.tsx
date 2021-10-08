@@ -11,6 +11,7 @@ import { Store } from '../core/createStore';
 import { PlainSearchParameters, SearchParameters } from 'algoliasearch-helper';
 import { MultiResponse } from '../types/algoliasearch';
 import { ConnectorDescription } from '../core/createConnector';
+import { WidgetsManager } from '../core/createWidgetsManager';
 
 type ResultsState = {
   metadata: never[];
@@ -21,7 +22,7 @@ type ResultsState = {
 // @TODO: move to createInstantSearchManager when it's TS
 type InstantSearchManager = {
   store: Store;
-  widgetsManager: any;
+  widgetsManager: WidgetsManager;
   getWidgetsIds(): any;
   getSearchParameters(
     ...args: any[]
@@ -38,7 +39,7 @@ type InstantSearchManager = {
   skipSearch(...args: any[]): any;
 };
 
-type SearchClient = {
+export type SearchClient = {
   search: (requests: Array<{}>) => Promise<{}>;
   searchForFacetValues: (requests: Array<{}>) => Promise<{}>;
 };
