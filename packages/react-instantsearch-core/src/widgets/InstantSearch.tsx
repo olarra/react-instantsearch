@@ -11,6 +11,7 @@ import { Store } from '../core/createStore';
 import { PlainSearchParameters, SearchParameters } from 'algoliasearch-helper';
 import { MultiResponse } from '../types/algoliasearch';
 import { ConnectorDescription } from '../core/createConnector';
+import { isMetadataEnabled, metadata } from '../core/metadata';
 import { WidgetsManager } from '../core/createWidgetsManager';
 
 type ResultsState = {
@@ -234,38 +235,12 @@ class InstantSearch extends Component<Props, State> {
   }
 
   componentDidMount() {
-    if (typeof window !== 'object') return;
-
-    const internalProps = ['contextValue', 'indexContextValue'];
-
-    const widgets = this.state.instantSearchManager.widgetsManager
-      .getWidgets()
-      .map(({ props, constructor }) => {
-        const { defaultProps = {}, displayName } = constructor._connectorDesc;
-
-        return {
-          displayName,
-          params: Object.keys(props).filter(
-            prop =>
-              !internalProps.includes(prop) &&
-              defaultProps[prop] !== props[prop] &&
-              props[prop] !== undefined
-          ),
-        };
-      });
-
-    const client = this.props.searchClient as any;
-    const ua =
-      client.transporter && client.transporter.userAgent
-        ? client.transporter.userAgent.value
-        : client._ua;
-
-    const payload = {
-      ua,
-      widgets,
-    };
-
-    console.log(payload);
+    if (isMetadataEnabled()) {
+      metadata(
+        this.state.instantSearchManager.widgetsManager,
+        this.props.searchClient
+      );
+    }
   }
 
   componentWillUnmount() {
